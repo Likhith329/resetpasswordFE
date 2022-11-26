@@ -1,0 +1,47 @@
+.registercont{
+  display: flex;justify-content: center;align-items: center;height: 770px;
+ 
+}
+.welcome{
+  font-size: 50px; font-weight: 500;
+}
+.inpbox{
+  margin: 20px; width: 400px;
+}
+.form{
+  display: flex;align-items: center;flex-direction: column; background-color:white;border-radius: 20px; padding-bottom: 10px;margin-bottom: 10px;
+}
+.loginbtn{
+  width: 400px;margin: 20px!important;
+}
+.error{
+  color: red;
+}
+
+.email-status,.resmsg{
+  display: flex;justify-content: center;align-items: center; height: 100vh;font-size: 50px; font-family: monospace;text-align: center;
+}
+
+
+
+@media (max-width:450px){
+
+  .welcome{
+      font-size: 30px; font-weight: 500;
+  }
+  .inpbox{
+      margin: 20px; width: 300px;
+  }
+  .form{
+      display: flex;align-items: center;flex-direction: column; background-color:white;border-radius: 15px; padding-bottom: 10px;margin-bottom: 10px;
+  }
+  .loginbtn{
+      width: 300px;margin: 15px!important;
+  }
+  .error{
+      color: red;
+  }
+  .email-status,.resmsg{
+    font-size: 20px;
+  }
+}
