@@ -78,7 +78,7 @@ export function Registerpage() {
                 <div>{formik.errors.confirmpassword && formik.touched.confirmpassword?<div className="error">{formik.errors.confirmpassword}</div>:null}</div>
               </div>
               <Button variant='contained' type='submit' className="loginbtn">Register</Button>
-              <div>Already have an account? <Link to={'/login'}>Login</Link></div>
+              <div>Already have an account? <Link to={'/resetpasswordfe/login'}>Login</Link></div>
           </Form>
         </Formik>
       </div>

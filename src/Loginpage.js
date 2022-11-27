@@ -43,7 +43,7 @@ export function Loginpage() {
                 <div>{formik.errors.password && formik.touched.password?<div>{formik.errors.password}</div>:null}</div>
               </div>
               <Button variant='contained' type='submit' className="loginbtn">Login</Button>
-              <div><Link to={'/forgotpassword'}>forgot password?</Link></div>
+              <div><Link to={'/resetpasswordfe/forgotpassword'}>forgot password?</Link></div>
               <div>Don't have an account? <Link to={'/resetpasswordfe'}>Sign up</Link></div>
            
           </Form>
