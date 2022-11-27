@@ -15,7 +15,7 @@ export function Resetpassword() {
 
   useEffect(()=>{
      async function gettokenfromdb(){
-        const response=await axios.get('https://resetpassword-be.herokuapp.com/users/get')
+        const response=await axios.get('http://localhost:8000/users/get')
         const user=response.data.filter(x=>{
           return x.email==email
         })
@@ -44,7 +44,7 @@ export function Resetpassword() {
    
         async function create(){
           try {
-            await axios.put('https://resetpassword-be.herokuapp.com/users/update',{
+            await axios.put('http://localhost:8000/users/update',{
               user:{
                 email:email,
                 password:values.newpassword

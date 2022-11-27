@@ -20,7 +20,7 @@ export function Forgotpassword() {
 
   useEffect(()=>{
     async function getdata(){
-      let response=await axios.get('https://resetpassword-be.herokuapp.com/users/get')
+      let response=await axios.get('http://localhost:8000/users/get')
       setData(response.data)
     }
     getdata()
@@ -32,7 +32,7 @@ export function Forgotpassword() {
 
   const onSubmit=(values)=>{
     try {
-      axios.post('https://resetpassword-be.herokuapp.com/forgotpassword',{
+      axios.post('http://localhost:8000/forgotpassword',{
       user:{...values}
     })
     setDisp('none')

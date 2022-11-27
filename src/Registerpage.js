@@ -10,7 +10,7 @@ export function Registerpage() {
 
   useEffect(()=>{
     async function getdata(){
-      const response=await axios.get('https://resetpassword-be.herokuapp.com/users/get')
+      const response=await axios.get('http://localhost:8000/users/get')
       setData(response.data)
     }
     getdata()
@@ -28,7 +28,7 @@ export function Registerpage() {
    
         async function create(){
           try {
-            await axios.post('https://resetpassword-be.herokuapp.com/register/signup',{
+            await axios.post('http://localhost:8000/register/signup',{
               user:{...values}
             })
           } catch (error) {
