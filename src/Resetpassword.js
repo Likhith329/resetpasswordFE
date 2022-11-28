@@ -9,20 +9,42 @@ export function Resetpassword() {
 
   //token from email
   const {email,token}=useParams()
-
- // token from database to compare with the token from email
-  const [confirmtoken,setconfirmtoken]=useState(token)
+  const [val,setVal]=useState(true)
 
   useEffect(()=>{
-     async function gettokenfromdb(){
-        const response=await axios.get('http://localhost:8000/users/get')
-        const user=response.data.filter(x=>{
-          return x.email==email
-        })
-        setconfirmtoken(user[0].token)
-     }
-     gettokenfromdb()
+    async function veroldtoken(){
+      let response=await axios.get('http://localhost:8000/users/get')
+      let users=response.data
+      let user=users.filter(x=>{
+        return x.email==email
+      })
+      let prevtoken=user[0].token
+      if(prevtoken=='' || prevtoken!=token){
+        setVal(false)
+      }
+    }
+    veroldtoken()
   },[])
+
+  useEffect(()=>{
+    async function vavnewtoken(){
+      await axios.post('http://localhost:8000/resetpassword',{
+        user:{
+          email:email,
+          token:token
+        }
+      }).then((res)=>{
+        console.log(res.data)
+        setVal(true)
+      }).catch((res)=>{
+        console.log(res.response.data)
+        setVal(false)
+      })
+    }
+    vavnewtoken()
+  },[])
+
+ 
 
   const [disp,setDisp]=useState('')
 
@@ -71,11 +93,10 @@ export function Resetpassword() {
     onSubmit,
     validate
   })
-console.log(token)
-console.log(confirmtoken)
+
   return (
     <div>
-      {token!=confirmtoken?<div className="text-center resmsg" >Invalid token</div>:
+      {val==true?
       <div className="container-fluid registercont" style={styles1}>
         <Formik>
           <Form onSubmit={formik.handleSubmit} className='form'  >
@@ -93,7 +114,7 @@ console.log(confirmtoken)
               <div>Already have an account? <Link to={'/login'}>Login</Link></div>
           </Form>
         </Formik>
-      </div>
+      </div>:val==false?<div className="text-center resmsg" >Invalid token</div>:''
         }
         <h2 className="text-center resmsg" style={styles2}>Your password has been set successfully!</h2>
     </div>
