@@ -20,7 +20,7 @@ export function Forgotpassword() {
 
   useEffect(()=>{
     async function getdata(){
-      let response=await axios.get('http://localhost:8000/users/get')
+      let response=await axios.get('https://resetpasswordbe.onrender.com/users/get')
       setData(response.data)
     }
     getdata()
@@ -32,7 +32,7 @@ export function Forgotpassword() {
 
   const onSubmit=(values)=>{
     try {
-      axios.post('http://localhost:8000/forgotpassword',{
+      axios.post('https://resetpasswordbe.onrender.com/forgotpassword',{
       user:{...values}
     })
     setDisp('none')

@@ -13,7 +13,7 @@ export function Resetpassword() {
 
   useEffect(()=>{
     async function veroldtoken(){
-      let response=await axios.get('http://localhost:8000/users/get')
+      let response=await axios.get('https://resetpasswordbe.onrender.com/users/get')
       let users=response.data
       let user=users.filter(x=>{
         return x.email==email
@@ -28,7 +28,7 @@ export function Resetpassword() {
 
   useEffect(()=>{
     async function vavnewtoken(){
-      await axios.post('http://localhost:8000/resetpassword',{
+      await axios.post('https://resetpasswordbe.onrender.com/resetpassword',{
         user:{
           email:email,
           token:token
@@ -66,7 +66,7 @@ export function Resetpassword() {
    
         async function create(){
           try {
-            await axios.put('http://localhost:8000/users/update',{
+            await axios.put('https://resetpasswordbe.onrender.com/users/update',{
               user:{
                 email:email,
                 password:values.newpassword

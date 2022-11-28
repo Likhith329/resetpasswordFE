@@ -10,7 +10,7 @@ export function Registerpage() {
 
   useEffect(()=>{
     async function getdata(){
-      const response=await axios.get('http://localhost:8000/users/get')
+      const response=await axios.get('https://resetpasswordbe.onrender.com/users/get')
       setData(response.data)
     }
     getdata()
@@ -28,7 +28,7 @@ export function Registerpage() {
    
         async function create(){
           try {
-            await axios.post('http://localhost:8000/register/signup',{
+            await axios.post('https://resetpasswordbe.onrender.com/register/signup',{
               user:{...values}
             })
           } catch (error) {
